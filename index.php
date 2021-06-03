@@ -13,6 +13,8 @@
 
   /* parola in input dall'url */
   $parola = $_GET['parola'];
+  
+  echo $parola;
 
   /* variabile utilizzata per salvare il carattere di censura da sostituire alla parola inserita */
   $censura = "****";
@@ -22,24 +24,30 @@
 
   $controlloSullaCensura = false; /* variabile che uso per vedere se la parola inserita è contenuta nel testo oppure no */
 
+  $censura =""; /* variabile di appoggio per un testo */
+
   /* if che assegna alla variabile controlloSullaCensura il valore true se la parola è contenuta nel testo */
-  if(str_contains($testo, $parola) === true){
+  if(strpos($testo, $parola)!==false){
     $controlloSullaCensura = true;
+    $censura = " verrà censurato";
     /*! ottimizzazione if di sotto $censura = "il testo verrà censurato"; */
   }else{
     $controlloSullaCensura = false;
+    $censura = " non verrà censurato perchè non contiene la parola inserita";
     /*!ottimizzazione if di sotto $censura = "il testo non verrà censurato perchè non contiene la parola inserita"; */
   }
 
-  $censura =""; /* variabile di appoggio per un testo */
+  
 
   /* if che assegna una determinata frase se sul testo è possibile fare la censura oppure no*/
+  /*
+  !! ottimizzato nell'if di sopra
   if($controlloSullaCensura === true){
     $censura = "il testo verrà censurato";
   }else{
     $censura = "il testo non verrà censurato perchè non contiene la parola inserita";
   }
-
+ */
 ?>
 
   <p>il testo è : <?php echo $testo ?></p> <!-- stampo il testo -->
