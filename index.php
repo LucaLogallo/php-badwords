@@ -61,3 +61,5 @@
   <hr>
 
   <p> <?php echo $testoCensurato ?> </p>  <!-- stampo il testo censurato -->
+
+  <p>lunghezza testo censurato: <?php echo strlen($testoCensurato) ?></p>
