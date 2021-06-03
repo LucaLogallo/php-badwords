@@ -20,16 +20,20 @@
   /* variabile di lavoro che salverà il risultato della funzione str_replace */
   $testoCensurato = str_replace($parola, $censura, $testo); /* sostituisce la variabile parola con la variabile censura se essa è contenuta nella variabile testo */
 
-  $controlloSullaCensura = false;
+  $controlloSullaCensura = false; /* variabile che uso per vedere se la parola inserita è contenuta nel testo oppure no */
 
+  /* if che assegna alla variabile controlloSullaCensura il valore true se la parola è contenuta nel testo */
   if(str_contains($testo, $parola) === true){
     $controlloSullaCensura = true;
+    /*! ottimizzazione if di sotto $censura = "il testo verrà censurato"; */
   }else{
     $controlloSullaCensura = false;
+    /*!ottimizzazione if di sotto $censura = "il testo non verrà censurato perchè non contiene la parola inserita"; */
   }
 
-  $censura ="";
+  $censura =""; /* variabile di appoggio per un testo */
 
+  /* if che assegna una determinata frase se sul testo è possibile fare la censura oppure no*/
   if($controlloSullaCensura === true){
     $censura = "il testo verrà censurato";
   }else{
@@ -48,9 +52,9 @@
 
   <h1>testo censurato <?php 
     if($controlloSullaCensura === true){
-      echo ": SI ";
+      echo ": SI "; /* visualizza il si se è censurato */
     }else{
-      echo ": NO";
+      echo ": NO"; /* visualizza no se non è stato censurato */
     }
   ?></h1>
 
